@@ -15,9 +15,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 });
 
-Route::get('/fetchlist',[ListController::class,'fetchList']);
-Route::get('/addlist  ',[ListController::class,'addList']);
-Route::post('/deletelist/$id',[ListController::class,'deleteList']);
+Route::get('/fetchlist', [ListController::class, 'fetchList']);
+Route::post('/addlist', [ListController::class, 'addList']);
+Route::delete('/deletetask/{id}', [ListController::class, 'deleteList']);  // Corrected this line
+Route::put('/updatetask/{id}/status', [ListController::class, 'updateTaskStatus']);
+
+
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
